@@ -1,0 +1,673 @@
+<html>
+	<head>
+		<!--Display the page name in the tab title-->
+		<title>
+			Famous Australian Beaches
+		</title>
+		<!--Link to the document CSS file, indicated by the 'stylesheet' relation of A1-Task2CSS.css to
+		the current html file-->
+
+		<style>
+			/*Style the table to span 100% width-wise of the screen (creating a dynamic width), have a purple dashed border
+			(border-collpase is separate so the cells do not attempt to merge borders), and have a box shadow, highlighting the
+			table from the page background and creating an aesthetic, modern effect. 
+			While the border attributes border-style border-width border-color could be 
+			condensed into the CSS composite property 'border:', to ensure each assignment criteria is fulfilled,
+			each property has been set individually.*/
+			table {
+				width: 100%;
+				border-width: 1.5px;
+				border-spacing:3px;
+				border-color: purple;
+				border-style: dashed;
+				border-collapse: separate;
+				box-shadow: 0 0 20px #C8C8C8;
+			}
+
+			/*Using the class selector, style the width of table header cells (td) and table data cells
+			(td) in the name and location column to be reduced to 15% of the table's total width (as its information 
+			requires less space). As well, position the data in the middle of the cell to allow
+			users to quickly find important information.*/
+			.name, .location {
+				width: 15%;
+				vertical-align: middle;
+				text-align: center;
+			}
+			
+			/*Use the class selector to isolate the td of class comment and information from the th.
+			This enables the content of the information to be presented in a readable manner,
+			in the middle of the cell with justified alignment.*/
+			td.comment, td.information {
+				vertical-align: middle;
+				text-align: justify;
+			}
+			
+			/*Using the class selector, style td elements assigned the 'name' class with a changed
+			background colour, to create an effect that distinguishes the heading beaches of the table*/
+			td.name{
+				background-color: #E8E8E8;
+			}
+			
+			/*Using the class selector, style the text colour for each of the beach names as a different
+			shade of purple, allowing viewers to differentiate the name of each beach forming an aesthetic gradient effect*/
+			td.name.one {
+				color: #4d004d;
+			}
+			
+			td.name.two {
+				color: #660066;
+			}
+			
+			td.name.three {
+				color: #800080;
+			}
+			
+			td.name.four {
+				color: #990099;
+			}
+			
+			td.name.five {
+				color: #b300b3;
+			}
+			
+			td.name.six {
+				color: #cc00cc;
+			}
+			
+			td.name.seven {
+				color: #e600e6;
+			}
+			
+			td.name.eight {
+				color: #ff00ff;
+			}
+			
+			td.name.nine {
+				color: #ff1aff;
+			}
+			
+			td.name.ten {
+				color: #ff33ff;
+			}
+		
+			/*Style the table headers to have 18px font-size, no border, a silver background colour, padding
+			to emphasise its heading status, and be positioned vertically and horizontally in the middle of the cell*/
+			th {
+				font-size: 18px;
+				border: none;
+				background-color:silver;
+				padding: 15px 10px 15px 10px;
+				text-align:center;
+				vertical-align: middle;
+			}
+			
+			/*Using the class selector, style the text colour for each of the table headers as a different
+			shade of purple, allowing viewers to differentiate the header of each column while forming an aesthetic gradient effect*/
+			th.name{
+					color: #4d004d;
+			}
+			
+			th.location{
+				color: #660066;
+			}
+			
+			th.information{
+				color: #800080;
+			}
+			
+			th.comment {
+				color: #990099;
+			}
+
+			/*Style table data cells to have 14x font-size, 150px height, a dynamic 25% width of the table's total width for each column,
+			a white background colour and a small separated purple border, allowing viewers to distinguish
+			the information in each column */
+			td {
+				font-size: 14px;
+				height:150px;
+				width: 25%;
+				background-color:white;
+				padding: 15px 15px 15px 15px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: #d9ccff;
+				border-collapse: separate;
+			}
+			
+			/*Employ the psuedo class selector (colon) to create an hover event. When the users mouse cursor is
+			positioned over a cell in the row, change the background colour of each table data to create a
+			highlighting effect. This allows viewers to trace the information to its beach.*/
+			tr:hover td {
+				background-color:#E8E8E8;
+			}
+
+			/*Add a box-shadow for each table row (distinguished by the class 'beach') to
+			ensure users can identify each row the of the table, in a minimally disruptive and
+			modern way.*/
+			.beach {
+					box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+			}
+			
+			/*Style the title/header of the webpage, ensuring it is noticeable but not interrupting viewers.
+			Employ padding to separate it from the site information to reduce disruption, and increase the
+			font size from 32px as default for heading1, to 35px to draw further attention. This is combined with
+			the filter property applying a drop shadow, with the syntax drop-shadow(horizontal-offset 
+			vertical-offset blur colour). Align the heading to the centre.*/
+			h1 {
+				padding: 10px 0px 0px 5px;
+				text-align: center;
+				font-size: 35px;
+				filter: drop-shadow(5px 5px 10px #C8A2C8);
+			}
+
+		</style>
+	</head>
+	<body>
+		<!--Display the title/header of the webpage-->
+		<h1>Famous Australian Beaches</h1>
+		<table>
+			<tr>
+				<!--1st column displays the name of the beach-->
+				<th class="name">
+					Beach name
+				</th>
+				<!--2nd column displys the place/state (beach location)-->
+				<th class = "location">
+					Beach location
+				</th>
+				<!--3rd column displays general information about the beach destination-->
+				<th class = "information">
+					General information
+				</th>
+				<!--4th column displays "comments" from the beach visitors-->
+				<th class = "comment">
+					Comments
+				</th>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow, allowing the user to distinguish each separate row-->
+			<tr class="beach">
+				<!--Display the name of the beach. Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name one">
+					<b>1.</b> Whitehaven Beach
+				</td>
+				<!--Display the place/state (beach location). Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Whitsunday Island, QLD
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					Famous for its fine white silica and clear, pristine water, Whitehaven Beach lies on the bucketlist
+					of travellers globally.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> 
+							<!--Use a self-closing empty line break element to separate the history topic indicator from the beach's information-->
+							<br />
+							Over time, sea levels rising and falling around the dunes created Whitehaven Beach.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Tongue Point lookout offers breathtaking views over Whitehaven Beach. The spectacular fusion of colours
+							is best experienced on low tide
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"The beach is pristine and the water is crystal clear." <br />
+							- Kim
+						</li>
+						<li>
+							"Memorable snorkelling experience. We even saw stingrays and a harmless Lemon Shark!" <br />
+							- Bob
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name two">
+					<b>2.</b> Cable Beach
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Broome, WA
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					Cable Beach is known for its powdery stretch of white sand lining the beautiful waters.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Named after the undersea telegraph cable laid between Broome and Java in 1889.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Cable beach contains top sights, with Gantheaume Point providing ocean views and dinosaur
+							footprints, and Roebuck Bay offering birdwatching and marine viewing.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"The clearest water and silkiest sand I have ever experienced." <br />
+							- Alice
+						</li>
+						<li>
+							"Vivid sunset enjoyed whilst riding camels along the beach." <br />
+							- Zhuo
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name three">
+					<b>3.</b> Burleigh Beach
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Burleigh Heads, Gold Coast, QLD
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					Given its relaxed atmosphere, eclectic views and surf reputation, Burleigh Beach is an iconic destination.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							An Indigneous tribe known as the Kombumerri clan originally inhabited the land
+							prior to European settlement. In 1886, it was assigned as a Reserve
+							for Public Purposes. In contemporary history, it is known as the genesis of competitive surfing. 
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Burleigh is renowned for David Fleay Wildlife Park, Jellurgal Aboriginal Cultural Center and the Ocean View Lookout Track.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Spent 3 full days surfing the best breaks ever!" <br />
+							- Antonio
+						</li>
+						<li>
+							"The kids loved the dolphins and we even saw a whale." <br />
+							- Anne
+						</li>
+						<li>
+							"Some great fishing - plenty of bream and tailor." <br />
+							- Chad
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name four">
+					<b>4.</b> Noosa Main Beach
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Noosa, Sunshine Coast, QLD
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					An exposed beach break with small waves due to its geographical landforms, Noosa Main Beach is the premier beach in the Noosa area,
+					well suited from beginner surfers and holidayers, to avid beachgoers.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Part of Noosa Headland which was delcared a Town Reserve, Noosa Main Beach has endured as a tourist attraction
+							since the 1890s.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Known for its integration with nature, landmarks include the Laguna Lookout, Mount Tinbeerwah and 
+							Tewatin Heritage Walk.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Easy access from Main Street, perfect for young children." <br />
+							- Jean
+						</li>
+						<li>
+							"A bit busy in summer - I recommend wlaking further into the National Park if you have the time." <br />
+							- Hassan
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name five">
+					<b>5.</b> Emu Bay
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Kangaroo Island, Penneshaw, SA
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					White yet compact sand and clear cerulean waters, Emu Bay allows visitors to drive
+					along the beach and admire its 10-20 metre high dunes.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Traditionally known as Mutawaynatji, Emu Bay was established in in 1827 as a supply port.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Unique shale geograpical formation, and a small fishing jetty dated to 1918. Also notably has Emu Bay Lavendar farm and Cape du Couedic Lighthouse.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Loved driving on the beach and the dunes are awesome." <br />
+							- Lance
+						</li>
+						<li>	
+							"Abundance of wildlife - we saw seals, kangaroos and echidnas." <br />
+							- Ranjit
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name six">
+					<b>6.</b> Wineglass Bay
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Freycinet National Park, TAS
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					An outcrop of the iconic Hazards range, Wineglass Bay's idyllic scenery offers a breathtaking view alongside
+					energetic outdoor activites.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							The beach derives its name from the whaling indsutyr for the 1800's, wehre the
+							water would turn the colour of red wine from the creatures' blood.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Wneglass bay includes landmarks such as the Wineglass Bay Lookout,
+							Mt Amos Climb, and the Tourville Lighthouse.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Such an impressive landscape, still so pristine." <br />
+							- Mel
+						</li>
+						<li>
+							"So many activities on offer - we went sea kayaking and scuba diving." <br />
+							- Minezi
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name seven">
+					<b>7.</b> Ricey Beach
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Rottnest Island, Perth, WA
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+				Boasting a unique stretch of coastline comprised of silky shores and diverse waters, the tranquil sound of the ocean
+				gives this beach its relaxing atmosphere.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Part of Rottnest Islands' Aboriginal prison until 1904.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							Landmarks nearby involve the Rottnest Island Visitor Centre, Rottnest Island Museum and Bathurst Lighthouse.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Interacted with a quokka - cutest thing ever!" <br />
+							- Mario
+						</li>
+						<li>
+							"Spectacular beach, safe, calm water perfect for families." <br />
+							- Jen
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name eight">
+					<b>8.</b> Byron Bay
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Lawson St, Byron Bay, NSW
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					With warm, clear waters, Byron Bay contains amenities, vibrance and vista, to relax at the beach and engage with the tides.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Established in 1860 as a timber port, it progressed into a small hippy town, with modern resorts,
+							cafes and boutiques arriving in the last 20 years.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							The best sights and landmarks in Byron Bay is the Famous Cape Byron Lighthouse, the Cubebin Wetland Sanctuary and Arakwal National Park.
+						</li>
+					</ul>
+				</td>
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Very crowded at weekends - suggest mid-week visits." <br />
+							- Bob
+						</li>
+						<li>"
+							It was an unforgottable experience." <br />
+							- Carlos
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name nine">
+					<b>9.</b> Fitzroy Island
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Cairns, North QLD
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					Fitzroy Island hosts an untouched paradise of rainforest alongside white coral beaches, and offers relaxation
+					with its calm sheltered waters.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Originally called Koba, Fitzroy island was named by Captain Cook after the family name of the Duke of Grafton.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							A prime location for thrillseekers, landmarks involve Kuranda Scenic Railway and Skyrail Tour as well as Glacier Rock.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Plenty of activities for all ages on this island."
+							- Tristan
+						</li>
+						<li>
+							"The coral on the beach can be sharp - rememeber to take shoes with you."
+							- Shiva
+						</li>
+					</ul>
+				</td>
+			</tr>
+			<!--Define the class selector for each row that is a beach. This is used to add a box
+			shadow to define each separate row-->
+			<tr class="beach">
+				<!--Define the class selector for each table data (td) that is part of the name column-->
+				<td class="name ten">
+					<b>10.</b> Bondi Beach
+				</td>
+				<!--Define the class selector for each td that is part of the location column-->
+				<td class = "location">
+					Compbell Parade, Sydney, NSW
+				</td>
+				<!--Display general information about the beach destination. Define the class selector for each td that is part of the information column-->
+				<td class = "information">
+					The kilometre stretch of nestled with its warm sands, entertainment and blue waters, Bondi Beach is
+					an iconic destination.
+					<!--An unordered list to dispay general information about the beach destination (history, landmarks, ...).
+					This table differentiates each heading (history, landmarks) so the user can
+					quickly navigate to specific information, as well as containing other information (represented by the ...)
+					in the general first sentence -->
+					<ul>
+						<li>
+							<b>History:</b> <br />
+							Bondi Beach's name originates from the Indigenous translation for 'sound of waves breaking on a beach'.
+						</li>
+						<li>
+							<b>Landmarks:</b> <br />
+							This beach is home to one of Australia's oldest lifesaving clubs, the Bondi Icebergs. Other landmarks include 
+							North Bondi Lookout and the Black Sunday monument.
+						</li>
+					</ul>
+				</td>
+				<!--Display "comments" from beach visitors. Define the class selector for each td that is part of the comment column-->
+				<td class = "comment">
+					<b>Comments:</b>
+					<!--An unordered list to display "comments" from the beach visitors-->
+					<ul>
+						<li>
+							"Electric and eclectic atmosphere."
+							- La Vonn
+						</li>
+						<li>
+							"Azure waters and honey sunshine."
+							- May
+						</li>
+						<li>
+							"Very busy in summer but you can't visit Sydney without going there."
+							- Ceileidh
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+
+<!--Extra CSS property: box-shadow. 
+
+This property is given in the format/syntax:
+box-shadow: horizontal-offset vertical-offset blur(greater the number, more blurred) colour.
+In this case, color is an rgba colour, giving values to represent a colour from red, green, blue and alpha. 
+Alpha refers to the opacity of a colour, this is specifically used to achieve the grey shadow appearance.
+-->

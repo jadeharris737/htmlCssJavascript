@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<!--Display the page name in the tab title-->
+		<title>A2-Task2</title>
+		<script>
+		
+			/*Create a global variable of dynamic type to store a value that indicates which image is currently displayed
+			on the web page. Dynamic type means that the same variable can store values of different data types,
+			assigning the correct type. Global indicates that the value can be read and modified by all functions.*/
+			var image = "seaside";
+			
+			/*Create a global variable to store the number of globe HTML entities displayed on the web page.*/
+			var numberOfGlobes = 0;
+			/*Alternate the presented image, and update the globe emoji under the image accordingly*/
+			function updateImageAndGlobes()
+			{
+				/*Invoke the updateGlobes() method to add or reset the globe emojis correctly*/
+				updateGlobes();
+				/*Invoke the updateImage() method to change the image displayed correctly*/
+				updateImage();
+			}
+			/*Add a new 'globe' emoji if the number of globe entities is less than 5, otherwise delete (reset) the text field and display one
+			globe again. Update the variable tracking the number of globes on the web page.*/
+			function updateGlobes()
+			{
+				/*Store the element that displays the globe emojis by returning the element from the getElementById() method*/
+				var displayGlobes = document.getElementById("globeCount");
+				
+				/*Test if there are no more than 4 globes. If there are no more than 4 globes, add another globe emoji.
+				If 5 globes has been reached, delete (reset) the globes and display one globe again.*/
+				if (numberOfGlobes <= 4)
+				{
+					/*Increment the value tracking the number of globes displayed*/
+					numberOfGlobes += 1;
+					
+					/*Modify the HTML content (inner HTML) of the element displaying the globe emojis by adding another icon
+					to the existing contents.*/
+					displayGlobes.innerHTML += "&#127759;";
+				}
+				else
+				{
+					/*Reset the value tracking the number of globes displayed then display 1*/
+					numberOfGlobes = 1
+					
+					/*Modify the HTML content (inner HTML) of the element displaying the globe emojis, clearing its content
+					(deleting the existing icons) and displaying one globe again.*/
+					displayGlobes.innerHTML = "&#127759;";
+				}
+			}
+			/*Alternate the presented image according to the image that the web page is currently displaying*/
+			function updateImage()
+			{
+				/*Store the element that presents the web page elements by returning the element from the getElementById() method*/
+				var imageDisplay = document.getElementById("image");
+				
+				/*Test if the current image is the seaside, in which case the presented image
+				changes to the mountainside, otherwise assume the current picutre is mountainside and modify the image
+				element to contain the mountain view. Update the variable tracking the current image displayed.*/
+				if (image == "seaside")
+				{
+					/*Modify the source of the image element to the mountain view image. This creates the effect of 
+					changing the displayed image*/
+					imageDisplay.src = "mountainView.jpg";
+					
+					/*Update the variable to store the mountain view as the presented image*/
+					image = "mountainView";
+				}
+				else
+				{
+					/*Modify the source of the image element to the seaside view image. This creates the effect of 
+					changing the displayed image*/
+					imageDisplay.src = "seaside.jpg";
+					
+					/*Update the variable to store the seaside as the presented image*/
+					image = "seaside";
+				}
+			}
+		</script>
+	</head>
+	<!--Horizontally align the web page contents in the center of the page for aesthetics, given the compact web page contents.-->
+	<body style="text-align:center;">
+	
+		<!--Use a self-closing line break to create white space, enhancing the presentation of the web page-->
+		<br />
+		
+		<h1>Globe Counter</h1>
+		
+		<!--Use a self-closing image elemnt displaying one image that alternates between the seaside image and mountain view image. Including 
+		an alternate text for the image if the browser cannot find an image, is saving on bandwidth, or if a user is employing a screen reader. 
+		Also, specify the width and height of the image in pixels to maintain the effect of the image alternating.-->
+		<img id="image" src = "seaside.jpg" onClick = "updateImageAndGlobes();" style ="width:900px; height:500px;" />
+		
+		<!--Use a self-closing line break to create white space, enhancing the presentation of the web page-->
+		<br /> 
+		
+		<!--Span element displayed under the image that contains the number of globes entites-->
+		<span id="globeCount"></span>
+	</body>
+</html>
+
+<!--References to each image used:
+	Seaside: https://s2.best-wallpaper.net/wallpaper/1440x900/1111/Blue-beach-a-coconut-tree_1440x900.jpg
+	Mountain View: https://images.unsplash.com/photo-1525784451128-d1488f52f03e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjByYW5nZXxlbnwwfHwwfHw%3D&w=1000&q=80
+-->

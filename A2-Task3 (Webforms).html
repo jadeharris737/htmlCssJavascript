@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<!--Display the page name in the tab title-->
+		<title>MyAppointment</title>
+	</head>
+	<!--Horizontally align the web page contents in the center of the page for aesthetics, given the compact web page contents.-->
+	<body style="text-align:center;">
+		<br />
+		<!--Display the page name for the web form-->
+		<h1>MyAppointment</h1>
+		<!--The form action specifies the address that the server is running at. The form method specifies how to send form data.
+		The 'get' method specifies that form data can be sent as variables contained in the URL. This lowers system security as 
+		any sensitive information can be accessed as the value of the parameters, but it enables the site to be revisited.
+		Contrastingly, the 'post' method does not display form data in the url, improving security. However, the conseqeunce is that 
+		parameters are not saved.-->
+		<form action ="http://myAppo.com.au/query" method ="get" >
+			<!--Use the table arrangement so that the webform looks presentable for the users. Centre the table with the attribute
+			margin-right:auto and margin-left:autio (automatically positioning the table in the centre). Remove the border to improve
+			web page clarity.-->
+			<table style="border:0; margin-left:auto; margin-right:auto;">
+				<tr>
+					<!--The multiple lines for each radio button expand the table row vertically. Thus, align the input instruction 
+					to the top of the cell to improve the presentation for the user-->
+					<td style="vertical-align:top;"> 
+						Preferred Surgery: 
+					</td>
+					<td>
+						<!--Radio buttons allow the user to choose only one value. Use three radio buttons for the surgery choice.
+						Name specifies the parameter that the web form element changes, referred to from the system documentation. 
+						Value refers to the value that selecting the option assigns to the parameter-->
+						<input type="radio" name="dentist" value = "woll" />Best Wollongong<br />
+						<input type="radio" name="dentist" value = "liv" />Perfect Smile Liverpool<br />
+						<input type="radio" name="dentist" value = "shell" />One Dentist Shellharbour<br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Name: 
+					</td>
+					<td>
+						<!--Use a text field to input the value of the users name, assigned to the 'name' parameter
+						of the web form.-->
+						<input type="text" name="name" /> <br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Mobile Phone Number:
+					</td>
+					<td>
+						<!--Use a text field to input the value of the users name, assigned to the 'phone' parameter
+						of the web form.-->
+						<input type="text" name="phone" /> <br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Email:
+					</td>
+					<td>
+						<!--Use a text field to input the value of the users name, assigned to the 'email' parameter
+						of the web form.-->
+						<input type="text" name="email" /> <br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Prefered Time Slot:
+					</td>
+					<td>
+						<!--A selection box offers a drop-down list for the user to choose an option from. Provide five value options
+						for the preferred appointment time slot.-->
+						<select name="time">
+							<option value = "1"> 9-10am </option>
+							<option value = "2"> 10-11am </option>
+							<option value = "3"> 12-1pm </option>
+							<option value = "4"> 1-2pm </option>
+							<option value = "5"> 2-3pm </option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<!--The multiple lines for each the text area element expand the table row vertically. Thus, align the input instruction 
+					to the top of the cell to improve the presentation for the user-->
+					<td style="vertical-align:top;">
+						Additional Details:
+					</td>
+					<td>
+						<textarea name="note" rows ="5"></textarea> <br />
+					</td>
+				</tr>
+				<tr>
+					<!--The multiple lines for each checkbox expand the table row vertically. Thus, align the input instruction 
+					to the top of the cell to improve the presentation for the user-->
+					<td style="vertical-align:top;">
+						Prefered Method for Communication:
+					</td>
+					<td>
+						<!--Checkboxes allow multiple acceptable values for selection. Use two checkboxes to specify the user's preferred method for communication.
+						It accepts zero to multiple values.-->
+						<input type="checkbox" name="reminder" value = "SMS" /> Notification via sms <br />
+						<input type="checkbox" name="reminder" value = "EM" /> Notification via email <br />
+					</td>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+						<br />
+						<!--Use a 'submit button' type displaying the text 'Submit Form' to direct the user to submit the form. The web form will
+						assign the entered values to each name (parameter), creating a URL that is sent to the back-end service with the form data.-->
+						<input type="submit" value ="Submit Form" />
+						<!--Use a 'reset' button' displaying the text 'Reset Form' if the user wishes to clear their entered data. The web form will
+						automatically clear or reset each element to its default state-->
+						<input type="reset" value ="Reset Form" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

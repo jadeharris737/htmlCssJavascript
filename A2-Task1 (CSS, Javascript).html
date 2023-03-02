@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<!--Display the page name in the tab title-->
+		<title>A2-Task 1</title>
+		
+		<!--Specify document javascript in the <head> tag to implement the dynamic web page effects-->
+		<script>
+			/*Create a global variable of dynamic type to store the number displayed on the web page. 
+			Dynamic type means that the same variable can store values of different data types,
+			assigning the correct type. Global indicates that the value can be read and modified by all functions.*/
+			var presentedNumber;
+			
+			/*Create and display a randomly generated three-digit number*/
+			function displayRandomNumber()
+			{
+				/*Store a randomly generated 3-digit number (meaning the number is in the range 100-999).
+				The Math.random() method generates a random decimal number between 0 and 1, inclusive of
+				0 and non inclusive of 1. Math.floor() returns the largest integer less than or
+				equal the given number (rounds the decimal number down, ensuring that if the decimal 899.99
+				was generated, 899 would be the number output versus 900 which would be out of a three-digit number 
+				range). Generate numbers between 0-899 using Math.random()*900. Add 100, so that the range becomes 100 - 999,
+				as required.*/
+				presentedNumber = Math.floor(Math.random() * 900) + 100;
+				
+				/*Store the element that displays the presented number by returning the element from the getElementById() method*/
+				var presentedNumberDisplay = document.getElementById("presentedNumber");
+				
+				/*Modify the HTML content (inner HTML) of the presented number element to the randomly generated number*/
+				presentedNumberDisplay.innerHTML = presentedNumber;
+			}
+			
+			/*Mulitply the presented number by 10, and concatenate it to the message entered into the webpage text field.*/
+			function multiplyPresentedNumber()
+			{
+				/*Store the element that displays the presented number by returning the element from the getElementById() method*/
+				var presentedNumberDisplay = document.getElementById("presentedNumber");
+				
+				/*Store the element that contains the user's entered message by returning the element from the getElementById() method*/
+				var textField = document.getElementById("inputMessage");
+				
+				/*Store the message entered in the text field by accessing the value attribute, containing the text
+				input by the web page user.*/
+				var message = textField.value;
+				
+				/*Multiply the currently presented number by 10, and store the new presented number by updating the
+				number value.*/
+				presentedNumber = presentedNumber * 10;
+				
+				/*Modify the HTML content (inner HTML) of the presented number element to display the message
+				entered into the text field, followed by a space and the presented number multiplied by 10.*/
+				presentedNumberDisplay.innerHTML = message + " " + presentedNumber;
+			}
+			
+			/*Divide the presented number by 10, and concatenate it to the message entered into the webpage text field.*/
+			function dividePresentedNumber()
+			{
+				/*Store the element that displays the presented number by returning the element from the getElementById() method*/
+				var presentedNumberDisplay = document.getElementById("presentedNumber");
+				
+				/*Store the element that contains the user's entered message by returning the element from the getElementById() method*/
+				var textField = document.getElementById("inputMessage");
+				
+				/*Store the message entered in the text field by accessing the value attribute, containing the text
+				input by the web page user.*/
+				var message = textField.value;
+				
+				/*Multiply the currently presented number by 10, keep the whole number,
+				and store the new presented number by updating the number value.*/
+				presentedNumber = Math.floor(presentedNumber / 10);
+				
+				/*Modify the HTML content (inner HTML) of the presented number element to display the message
+				entered into the text field, followed by a space and the presented number divided by 10.*/
+				presentedNumberDisplay.innerHTML = message + " " + presentedNumber;
+			}
+			
+			/*Clear the text field, and display a newly generated random three-digit number, reseting the web page*/
+			function reset()
+			{
+				/*Invoke the displayRandomNumber() method to display a new random three-digit number*/
+				displayRandomNumber();
+				
+				/*Store the element that contains the user's entered message by returning the element from the getElementById() method*/
+				var textField = document.getElementById("inputMessage");
+				
+				/*Modify the value contained in the text field element to clear the element.*/
+				textField.value = "";
+			}
+		</script>
+	</head>
+	<!--Invoke the displayRandomEvent() function to generate and display a random number when the web page is loaded.
+	Align the web page contents in the center of the page for aesthetics, given the compact web page contents.-->
+	<body onload = "displayRandomNumber()" style="text-align:center;">
+	
+		<!--Use a self-closing line break to create white space, enhancing the presentation of the web page-->
+		<br />
+		
+		<h1>Random Number Tool</h1>
+		
+		<!--Display the presented number in blue colour-->
+		<span style="color:blue;" id="presentedNumber"></span>
+		
+		<!--Use a self-closing line break to create white space, enhancing the presentation of the web page-->
+		<br />
+	
+		<!--Use a text field input element to collect the user's input message, appended to the beginning of the presented number-->
+		<input type="text" id = "inputMessage" size="50" />
+		
+		<!--Use self-closing line breaks to create white space, enhancing the presentation of the web page-->
+		<br />
+		<br />
+		
+		<!--Use a button element for the user to invoke the multiplyPresentedNumber() function, updating
+		the web page accordingly-->
+		<button id = "multiply" onClick = "multiplyPresentedNumber()">Multiply by 10</button>
+		
+		<!--Use a button element for the user to invoke the dividePresentedNumber() function, updating
+		the web page accordingly-->
+		<button id = "divide" onClick = "dividePresentedNumber()">Divide by 10</button>
+		
+		<!--Use a button element for the user to invoke the reset() function, clearing
+		the web page accordingly-->
+		<button id = "reset" onClick = "reset()">Reset</button>
+	</body>
+</html>

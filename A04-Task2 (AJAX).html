@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<!--Display the page name in the tab title.-->
+		<title>A04-Task 1</title>
+		<!--Specify document JavaScript in the <head> tag to implement the AJAX request.-->
+		<script>
+			/*Create an AJAX query to retrieve the organisations register JavaScript Object Notation (JSON) data file when invoked by
+			the 'Read JSON' button on the web page.*/
+			function makeAJAXQueryOrganisationRecord()
+			{
+				//Create an object reference to a new XMLHttpRequest (XHR) object. XHR objects are used to interaction with a web server.
+				var xhttp = new XMLHttpRequest();
+				//Create a handler that will invoke the readyStateChangeHandler() function each time the .readyState property of the XMLHttpRequest 
+				//object changes.
+				xhttp.onreadystatechange = function()
+				{
+					readyStateChangeHandler(xhttp);
+				};
+				//Create query to retrieve the JSON file from the web server. Us the HTML GET http request method, specify the JSON file name
+				//(assuming that it is stored in the same directory as the sender HTML file), and include the optional 'true' parameter to specify that an 
+				//asynchronous call should be made. This is true by default.
+				xhttp.open("GET", "./A04-Task1.json", true);
+				//Send the request
+				xhttp.send();
+			}
+			
+			/*Handle the application's response when the readyState property of the XHR object changes. It should display an error
+			message to the user in case the application fails to retrieve the file, otherwise if the request was successful it should
+			update the web page.*/
+			function readyStateChangeHandler(xhttp)
+			{
+				//The .readyState property of the XHR object holds the state of the XMLHTTPRequest. The value 4 means that the object is stable as the request
+				//is finished and the response is ready. This function will be invoked each time the object state is changed, as well as for the .readyState
+				//value 0,1,2,3. The value 0 means that the request was not initialised. The value 1 means that the server connection was established.
+				//The value 2 means that the request was received by the server. The value 3 mans that the request is being processed. Therefore, the object
+				//should only be considered as updated with the XMLHTTPRequest when the value of .readyState is 4.
+				if (xhttp.readyState == 4)
+				{
+				//The .status property of the XHR object indicates the status of the request. The value 200 means that the request was successfully completed.
+				//The status value 404 means that the requested resource was not found. The status value 500 means that there was a server error processing the
+				//request. Thus, check if the status is equal to 200 before the request is considered successful.
+					if (xhttp.status == 200)
+					{
+						//A 200 status means that the request was successfully completed
+						handleStatusSuccess(xhttp);
+					}
+					else
+					{
+						//A 404 or 500 status means that an error occured with the XMLHTTPRequest
+						handleStatusFailure(xhttp);
+					}
+				}
+			}
+			
+			/*Handle the failure of a XMLHttpRequest and what will appear on the web page. In this case, display the XMLHttpRequest status that caused the request
+			to fail in the HTML display divider element.*/
+			function handleStatusFailure(xhttp)
+			{
+				  //Display the error message in the 'display' division HTML element.
+				  var displayDiv = document.getElementById("display");
+				  displayDiv.innerHTML = "XMLHttpRequest failed: status " + xhttp.status;
+			}
+			
+			/*Handle the success of a XMLHttpRequest and how it will update the web page. In this case, parse the JSON text into a JavaScript object, which will
+			be accessed and manipulated in JavaScript to update the HTML display divider element.*/
+			function handleStatusSuccess(xhttp)
+			{
+				//Get the JSON text received by the XMLHTTPRequest object.
+				var jsonText = xhttp.responseText;
+				//Parse the received JSON text into a javscript object that can be manipulated using javascript to update the web page content.
+				var organisationRegisterObj = JSON.parse(jsonText);
+				//Display the information that the new object consists of on the web page
+				displayOrganisationRegister(organisationRegisterObj);
+			}
+			
+			/*Display the JavaScript object information on the web page through the use of string concatenation, to replace the inner HTML of the display
+			divider element.*/
+			function displayOrganisationRegister(organisationRegisterObj)
+			{
+				//Use string concatenation to construct the HTML code that formats and displays the organisation info.
+				//The tags contained in the string will work as starting and ending tags for HTML elements when they are
+				//embedded into the inner HTML of the divider element.
+				//<br /> indicates a self-closing element for a single horizontal line that breaks up the web page content.
+				var html = "<b>" + organisationRegisterObj.registerTitle + "</b><br />";	
+				html += "<i>list is updated as of: " + organisationRegisterObj.date + "</i>";
+				html += "<hr />";
+				
+				//Iterate through each organisation stored in organisationRegister's array of organisations. As the number of organisations is not certain to be
+				//known, access the .length property of the organisations array to create the loop continuation condition. This will terminate the loop
+				//once the information for the final organisation has been displayed.
+				for (var organisationNumber = 0; organisationNumber < organisationRegisterObj.organisations.length; organisationNumber++)
+				{
+					html += "<br />";
+					//Store the organisation whose information is currently being displayed by the organisations counted loop. The organisationNumber variable
+					//represents the index of the current organisation within the organisations array.
+					var organisation = organisationRegisterObj.organisations[organisationNumber];
+					
+					//Use string concatenation to display and format each field of information from the current organisation.
+					html += "for the organisation <b><u>" + organisation.organisationName + "</u></b>,";
+					html += " located at: <i>" + organisation.address + "</i> currently available services are:";
+					html += "<br /><br />";
+					
+					//Iterate through each service stored in an organisation's array of services. As the number of organisations is not certain to be
+					//known, access the .length property of the availableServices array to create the loop continuation condition. This will terminate the loop
+					//once the information for the final service has been displayed.
+					for (var serviceNumber = 0; serviceNumber < organisation.availableServices.length; serviceNumber++)
+					{
+						//Store the service whose information is currently being displayed by the avaliableServices counted loop. The serviceNumber variable
+						//represents the index of the current service within the availableServices array.
+						var service = organisation.availableServices[serviceNumber];
+						
+						//Add one to the current serviceNumber when displaying its order to the use because the exemplar format snapshot numbers the services beginning
+						//at 1, e.g '1., 2., 3.,', but the availableServices loop initialises serviceNumber at 0. This is because arrays are 0-based, meaning that
+						//their first index is 0.
+						html += (serviceNumber + 1) + ". on ";
+						//Use the HTML character entity to display the less than symbol, so that the '-->' text element that should be displayed is not registered
+						//as a comment when it is embedded into the inner HTML of the divider element.
+						html += service.days + " --&gt; ";
+						html += "<b>" + service.serviceName + "</b>,";
+						html += " cost: " + service.cost;
+						
+						html += "<br /><br />";
+					}
+					html += "<hr />";
+				}
+				//Now, show the constructed HTML string in the display divider element to update the web page. 
+				//Firstly, store the display divider element in the variable displayDiv by returning the object from the document.getElementById() method.
+				var displayDiv = document.getElementById("display");
+				//Assign the html string with the information from the organisations register in the display divider's innerHTML property. This will
+				//update the web page.
+				displayDiv.innerHTML = html;
+			}
+		</script>
+	</head>
+	<body>
+		<!--Use a button element to enable the user to invoke the AJAX query that will ultimately update the web page with the organisations register data,
+		retrieved from the JSON file.-->
+		<button onClick = "makeAJAXQueryOrganisationRecord()">
+			Read JSON
+		</button>
+		<!--Use a self-closing line break to create white space, enhancing the presentation of the web page-->
+		<br /><br />
+		<!--Display appropriate information to the user. It is assumed that the divider begins empty, until the user invokes the 'Read JSON' button.
+		The divider should display the organisation register information, or the XMLHTTPRequest failure message including the erroneous status. This will
+		assist the user in realising and recovering from the issue.-->
+		<div id = "display">
+		</div>
+	</body>
+</html>

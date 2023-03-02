@@ -1,0 +1,112 @@
+<?xml version="1.0" standalone="yes" ?>
+<!--The XML declaration identifies the document as being XML. Standalone indicates whether the Document Type Definition (DTD)
+is internal (allowing the XML and DTD to 'standalone) or external, whereby the XML will rely on another document.-->
+
+<!--XML DTD defines the legal building blocks of the XML document by providing a list of legal elements and attributes.-->
+<!DOCTYPE organisationsRegister [
+	<!ELEMENT organisationsRegister (organisation*)>
+	<!--Declare the root element 'organisationsRegister' and declare that the child element 'organisation' can occur zero or more
+	times inside the parent element (assumption)-->
+	<!ATTLIST organisationsRegister currentDate CDATA #REQUIRED>
+	<!-- Declare the attribute 'currentDate' with the attribute type of character data (CDATA), and as a required attribute (assumption). -->
+	<!ELEMENT organisation (organisationName, availableServices)>
+	<!-- Declare the element organisation with the child elements 'organisationName' then 'availableServices' -->
+	<!ELEMENT organisationName (#PCDATA)>
+	<!-- Declare the element 'organisationName' that is of the type parsed character data (#PCDATA). -->
+	<!ELEMENT availableServices (service*)>
+	<!-- Declare the element 'availableSerices' and declare that the child element 'service' can occur zero or more times
+	inside the parent element (assumption). -->
+	<!ELEMENT service (serviceName, days, cost)>
+	<!-- Declare the element 'service' with the child elements 'serviceName', 'days' and 'cost' -->
+	<!ELEMENT serviceName (#PCDATA)>
+	<!-- Declare the element 'serviceName' that is of the type parsed character data (#PCDATA). -->
+	<!ELEMENT days (#PCDATA)>
+	<!-- Declare the element 'days' that is of the type parsed character data (#PCDATA). -->
+	<!ELEMENT cost (#PCDATA)>
+	<!-- Declare the element 'cost' that is of the type parsed character data (#PCDATA). -->
+]>
+
+<!--Define the root element 'register'. It is assumed that the current date is metadata (data to describe data).
+In this case, it makes it more important to the system, than the viewer. Thus, this is  declared as an attribute (as opposed to an element).
+XML attributes are used to provide additional information about elements. Here, it provides additional information about the
+current date of the information.-->
+<organisationsRegister currentDate="09/09/2022">
+	<!-- Define the child element 'organisation' which consists of each organisation's name and available services -->
+	<organisation>
+		<!-- Define the child element that stores the organisation's name-->
+		<organisationName>NGO Free Spirit</organisationName>
+		<!-- Define the child element 'availableServices' which consists of each service offered -->
+		<availableServices>
+			<!-- Define the child element 'service' which consists of each service's name, days they are offered, and their cost -->
+			<service>
+				<!-- Define the child element that stores the service's name-->
+				<serviceName>Parents workshops</serviceName>
+				<!-- Define the child element that stores the service's days-->
+				<days>Thursday</days>
+				<!-- Define the child element that stores the service's cost-->
+				<cost>$10</cost>
+			</service>
+			
+			<!-- Define the child element 'service' which consists of each service's name, days they are offered, and their cost -->
+			<service>
+				<serviceName>Children playgroups</serviceName>
+				<days>Friday</days>
+				<cost>$5</cost>
+			</service>
+			
+			<!-- Define the child element 'service' which consists of each service's name, days they are offered, and their cost -->
+			<service>
+				<serviceName>Youth counselling</serviceName>
+				<days>>Wednesday, Friday</days>
+				<cost>Free</cost>
+			</service>
+		</availableServices>
+	</organisation>
+	
+	<!-- Define the child element 'organisation' which consists of each organisation's name and available services -->
+	<organisation>
+		<organisationName>Southern friends</organisationName>
+		<!-- Define the child element 'availableServices' which consists of each service offered -->
+		<availableServices>
+			<!-- Define the child element 'service' which consists of each service's name, days they are offered, and their cost -->
+			<service>
+				<serviceName>Visual art</serviceName>
+				<days>Monday</days>
+				<cost>free</cost>
+			</service>
+			
+			<service>
+				<serviceName>Singing together</serviceName>
+				<days>Tuesday</days>
+				<cost>$15</cost>
+			</service>
+			
+			<service>
+				<serviceName>My music workshop</serviceName>
+				<days>Tuesday, Wednesday</days>
+				<cost>$20</cost>
+			</service>
+		</availableServices>
+	</organisation>
+	
+	<!-- Define the child element 'organisation' which consists of each organisation's name and available services -->
+	<organisation>
+		<organisationName>Neighbourhood clinic</organisationName>
+		<!-- Define the child element 'availableServices' which consists of each service offered -->
+		<availableServices>
+			<!-- Define the child element 'service' which consists of each service's name, days they are offered, and their cost -->
+			<service>
+				<serviceName>Health check</serviceName>
+				<days>Thursday</days>
+				<cost>$10</cost>
+			</service>
+			
+			<!-- Define the child element 'service' which consists of each service's name, days they are offered, and their cost -->
+			<service>
+				<serviceName>Blood test</serviceName>
+				<days>Thursday</days>
+				<cost>$12</cost>
+			</service>
+		</availableServices>
+	</organisation>	
+</organisationsRegister>

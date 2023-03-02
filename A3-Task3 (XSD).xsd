@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<!--The XML declaration identifies the document as being XML.-->
+
+<!--Xml Schema Definition (XSD) defines the legal building blocks of the XML document by providing a list of legal elements and attributes.
+The XML schema declaration includes xmlns, which defines the xml namespace. xsd="http://www.w3.org/2001/XMLSchema" stores the prefix to refer to the
+xml namespace. The xml namespace is used as a prefix to provide 'building material', such as xsd:element and xsd:attribute. Additionally,
+the root element in the xml document (in this case the root element is 'organisationRegister') consists of 
+<organisationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="A3-task3.xsd">-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="organisationsRegister">
+		<!--ComplexType declaration as the 'organisationsRegister' element consists of a child class ('organisation') and one attribute
+		('currentDate)-->
+		<xsd:complexType>
+			<!--Sequence declaration for each of the child elements of 'organisationsRegister'-->
+			<xsd:sequence>
+				<!--Declaration of the 'organisation' child element which can occur zero or more (unbounded) times inside the parent element
+				(assumption)-->
+				<xsd:element name="organisation" minOccurs="0" maxOccurs="unbounded">
+					<!--ComplexType declaration as the 'organisation' element consists of child classes ('organisationName' and 'availableServices')-->
+					<xsd:complexType>
+						<!--Sequence declaration for each of the child elements of 'organisation'-->
+						<xsd:sequence>
+							<xsd:element name="organisationName" type="xsd:string" />
+							<xsd:element name="availableServices">
+								<!--ComplexType declaration as the 'availableServices' element consists of a child class ('service')-->
+								<xsd:complexType>
+									<!--Sequence declaration for each of the child elements of 'availableServices'-->
+									<xsd:sequence>
+										<!--Declaration of the 'service' child element which can occur zero or more (unbounded) times inside the parent element
+										(assumption)-->
+										<xsd:element name="service" minOccurs="0" maxOccurs="unbounded">
+											<!--ComplexType declaration as the 'service' element consists of child classes ('serviceName', 'days' and 'cost')-->
+											<xsd:complexType>
+												<!--Sequence declaration for each of the child elements of 'service'-->
+												<xsd:sequence>
+													<xsd:element name="serviceName" type="xsd:string" />
+													<xsd:element name="days" type="xsd:string" />
+													<xsd:element name="cost" type="xsd:string" />
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<!-- Attribute declaration for 'currentDate' which 'organisationRegister' consists of.
+			Because the date is in the format of dd/mm/yyyy not yyyy-mm-dd as http://www.w3.org/2001/XMLSchema documentation
+			specifies, the 'currentDate' attribute is a string type.-->
+			<xsd:attribute name="currentDate" type="xsd:string" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
