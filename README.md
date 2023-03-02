@@ -1,4 +1,4 @@
-# htmlCssJavascript
+# html css javascript
 University projects completed during first year (2022) in 'Introduction to Web Technology' course. <br /><br />
 Demonstrates HTML, CSS, Javascript, XML, DTD, XSD, JSON and AJAX.<br />
 Not currently maintained or updated since 2022.
